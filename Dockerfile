@@ -28,7 +28,7 @@ EXPOSE 5556/tcp
 WORKDIR /app/riemann-${RIEMANN_VERSION}
 
 ADD riemann.config.tmpl /app/riemann-${RIEMANN_VERSION}/etc/riemann.config.tmpl
-ADD main.clj /app/etc/main.cli
+ADD main.clj /app/etc/main.clj
 
 ENTRYPOINT [ "dockerize", "-template", "/app/riemann-0.2.10/etc/riemann.config.tmpl:/app/riemann-0.2.10/etc/riemann.config"]
 
