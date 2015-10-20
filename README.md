@@ -19,7 +19,7 @@ Shipping your custom Riemann configurations within docker:
         include/docker-riemann
 ```
 
-Mounting a volume with your custom Riemann configurations:
+Or mounting a volume with your custom Riemann configurations:
 
 ```sh
     docker run -d \
@@ -27,8 +27,8 @@ Mounting a volume with your custom Riemann configurations:
         -p 5555:5555 \
         -p 5556:5556 \
         -e HOST=0.0.0.0 \
-        -e VOLUME="/path-to-volume"
-        -v /path-to-volume:/path-to-volume
+        -e VOLUME="/path-to-volume" \
+        -v /path-to-volume:/path-to-volume \
         include/docker-riemann
 ```
 
