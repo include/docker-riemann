@@ -6,9 +6,9 @@
 ; Listen on the local interface over TCP (5555), UDP (5555), and websockets
 ; (5556)
 (let [host "{{ if .Env.HOST }}{{ .Env.HOST }}{{ else }}0.0.0.0{{ end }}"]
-  (tcp-server {:host host})
-  (udp-server {:host host})
-  (ws-server  {:host host}))
+  (udp-server {:host host :port {{ if .Env.UDP_PORT }}{{ .Env.UDP_PORT }}{{ else }}5555{{ end }}})
+  (tcp-server {:host host :port {{ if .Env.TCP_PORT }}{{ .Env.TCP_PORT }}{{ else }}5555{{ end }}})
+  (ws-server  {:host host :port {{ if .Env.WSE_PORT }}{{ .Env.WSE_PORT }}{{ else }}5556{{ end }}}))
 
 ; Expire old events from the index every 5 seconds.
 (periodically-expire 5)

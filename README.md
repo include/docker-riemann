@@ -12,9 +12,12 @@ Shipping your custom Riemann configurations within docker:
 ```sh
     docker run -d \
         -p 5555:5555/udp \
-        -p 5555:5555 \
-        -p 5556:5556 \
-        -e HOST=0.0.0.0 \
+        -p 5555:5555/tcp \
+        -p 5556:5556/tcp \
+        -e UDP_PORT=5555 \
+        -e TCP_PORT=5555 \
+        -e WSE_PORT=5556 \
+        -e HOST=0.0.0.0  \
         -e CONFDIR=/app/etc \
         include/docker-riemann
 ```
@@ -24,9 +27,12 @@ Or mounting a volume with your custom Riemann configurations:
 ```sh
     docker run -d \
         -p 5555:5555/udp \
-        -p 5555:5555 \
-        -p 5556:5556 \
-        -e HOST=0.0.0.0 \
+        -p 5555:5555/tcp \
+        -p 5556:5556/tcp \
+        -e UDP_PORT=5555 \
+        -e TCP_PORT=5555 \
+        -e WSE_PORT=5556 \
+        -e HOST=0.0.0.0  \
         -e VOLUME="/path-to-volume" \
         -v /path-to-volume:/path-to-volume \
         include/docker-riemann
